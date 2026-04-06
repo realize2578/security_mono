@@ -1,9 +1,12 @@
 export function fetchApi(url: string, options?: RequestInit) {
-    if (options?.body) {
+
+    options = options || {};
+    // headers.set("credentials", "include");
+    options.credentials = "include"; //둘다 동일일
+
+    if (options.body) {
         const headers = new Headers(options.headers || {});
         headers.set("Content-Type", "application/json");
-        // headers.set("credentials", "include");
-        options.credentials = "include"; //둘다 동일일
         options.headers = headers;
     }
 
